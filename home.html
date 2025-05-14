@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Toko Dian Ayu</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background image and blur */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('image/background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      filter: blur(8px);
+      z-index: -2;
+    }
+
+    /* Blue translucent overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(30, 87, 153, 0.4);
+      z-index: -1;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding-bottom: 80px; /* ruang footer tetap */
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 60px;
+      padding: 12px 30px;
+      background: rgba(30, 87, 153, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #d4af37;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      color: #d4af37;
+      font-size: 36px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .nav a:hover {
+      color: #d4af37;
+    }
+
+    #cart-link {
+      position: relative;
+      display: inline-block;
+    }
+    #cart-count {
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 8px;
+      font-size: 12px;
+      position: absolute;
+      top: -10px;
+      right: -15px;
+    }
+
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 80px 20px 0;
+      max-width: 1300px;
+      margin: 0 auto;
+      flex: 1;
+      z-index: 1;
+    }
+
+    .content {
+      color: #fff;
+      max-width: 600px;
+      margin: 20px;
+      text-align: center;
+    }
+
+    .content h2 {
+      font-size: 80px;
+      font-family: 'Great Vibes', cursive;
+    }
+
+    .content p {
+      font-size: 40px;
+      color: #d4af37;
+      font-weight: 600;
+    }
+
+    .image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      max-width: 600px;
+      height: calc(100vh - 80px);
+      padding-bottom: 60px;
+    }
+
+    .image img {
+      width: auto;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      background: rgba(30, 87, 153, 0.8);
+      border-top: 3px solid #d4af37;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      z-index: 10;
+    }
+
+    footer marquee a {
+      color: #d4af37;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer marquee a:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+        padding-top: 100px;
+      }
+
+      .content h2 {
+        font-size: 56px;
+      }
+
+      .content p {
+        font-size: 28px;
+      }
+
+      .image {
+        height: calc(100vh - 140px);
+        padding-bottom: 60px;
+      }
+
+      .image img {
+        height: 100%;
+        width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Dian Ayu</h1>
+    <div class="nav">
+      <a href="home.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="aneka menu.html">Product</a>
+      <a href="contact person.html">Contact Person</a>
+      <a href="keranjang.html" id="cart-link">🛒 <span id="cart-count">0</span></a>
+    </div>
+  </header>
+  <main>
+    <div class="content">
+      <h2>WELCOME</h2>
+      <p>Toko Dian Ayu</p>
+    </div>
+    <div class="image">
+      <img src="image/maskot.png" alt="Gambar Toko" />
+    </div>
+  </main>
+  <footer>
+    <marquee behavior="scroll" direction="left" scrollamount="5">
+      Terima kasih telah mengunjungi Toko Dian Ayu! Dibuat oleh:
+      <a href="https://portfolio1.com" target="_blank">'Afifah Salwa</a> |
+      <a href="https://portfolio2.com" target="_blank">Ananda Istiqomah</a> |
+      <a href="https://andikaja.github.io/portofolio/home.html" target="_blank">Andika</a> |
+      <a href="https://portfolio4.com" target="_blank">Ayudiah Rachmaniya</a> |
+      <a href="https://portfolio5.com" target="_blank">Frederik Wiandino Girkandra</a>
+    </marquee>
+  </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.getElementById("cart-count").innerText = cart.length;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profil - Toko Dian Ayu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      position: relative;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    /* Background image + blur */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('image/background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      filter: blur(8px);
+      z-index: -2;
+    }
+
+    /* Blue translucent overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(30, 87, 153, 0.4);
+      z-index: -1;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding-bottom: 80px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 60px;
+      padding: 12px 30px;
+      background: rgba(30, 87, 153, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #d4af37;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      color: #d4af37;
+      font-size: 36px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .nav a:hover {
+      color: #d4af37;
+    }
+
+    #cart-link {
+      position: relative;
+      display: inline-block;
+    }
+    #cart-count {
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 8px;
+      font-size: 12px;
+      position: absolute;
+      top: -10px;
+      right: -15px;
+    }
+
+    main {
+      padding: 100px 20px 120px;
+      flex: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .cardname {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 40px;
+      background-color: rgba(0, 102, 204, 0.7); /* Warna biru */
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      align-items: center;
+    }
+
+    .cardname img {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 15px;
+      object-fit: cover;
+      display: block;
+      margin: auto;
+    }
+
+    .content h2 {
+      font-size: 2em;
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+
+    .content p {
+      font-size: 16px;
+      line-height: 1.6;
+      text-align: justify;
+      color: #fff;
+    }
+
+    .lokasi-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: inline-flex;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .lokasi-btn:hover {
+      background-color: #ffd700;
+      color: #000;
+    }
+
+    .lokasi-btn img {
+      width: 22px;
+      margin-right: 10px;
+    }
+
+    .quote {
+      font-style: italic;
+      text-align: center;
+      font-size: 18px;
+      margin-top: 40px;
+      color: #f1f1f1;
+    }
+
+    .facts {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .fact-box {
+      background-color: rgba(0, 102, 204, 0.7);
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      width: 200px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .fact-box h3 {
+      color: #ffd700;
+      font-size: 28px;
+    }
+
+    .fact-box p {
+      margin-top: 5px;
+      font-size: 14px;
+      color: white;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      background: rgba(30, 87, 153, 0.8);
+      border-top: 3px solid #d4af37;
+      color: #fff;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      z-index: 10;
+    }
+
+    footer marquee a {
+      color: #d4af37;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer marquee a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .cardname {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .cardname img {
+        max-width: 200px;
+      }
+
+      .fact-box,
+      .testimonial-card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Dian Ayu</h1>
+    <div class="nav">
+      <a href="home.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="aneka menu.html">Product</a>
+      <a href="contact person.html">Contact Person</a>
+      <a href="keranjang.html" id="cart-link">🛒 <span id="cart-count">0</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="cardname">
+      <img src="image/owner.jpg" alt="Owner">
+      <div class="content">
+        <h2>Sri Andayani</h2>
+        <p>Saya, Sri Andayani, pendiri PT DianAyu, memulai perjalanan bisnis ini pada tahun 2015. Dengan tujuan menyediakan camilan berkualitas tinggi, produk kami telah berkembang menjadi pilihan favorit banyak orang.</p>
+        <p>Kami memulai dengan keripik yang terbuat dari bahan pilihan dan cita rasa khas yang menggugah selera. Setiap produk kami dibuat dengan penuh perhatian agar Anda mendapatkan kenikmatan yang tak terlupakan.</p>
+        <a class="lokasi-btn" href="https://maps.app.goo.gl/EJ1HusoqYST3Q5Jo6" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Lokasi">
+          Alamat Kami
+        </a>
+      </div>
+    </section>
+
+    <p class="quote"><b>"Kesuksesan besar dimulai dari langkah kecil yang konsisten." – Sri Andayani</b></p>
+
+    <section class="facts">
+      <div class="fact-box">
+        <h3>2015</h3>
+        <p>Tahun Berdiri</p>
+      </div>
+      <div class="fact-box">
+        <h3>Keripik Tempe</h3>
+        <p>Produk Terfavorit</p>
+      </div>
+      <div class="fact-box">
+        <h3>+1000</h3>
+        <p>Pelanggan Puas</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <marquee behavior="scroll" direction="left" scrollamount="5">
+      Terima kasih telah mengunjungi Toko Dian Ayu! Dibuat oleh:
+      <a href="https://portfolio1.com" target="_blank">'Afifah Salwa</a> |
+      <a href="https://portfolio2.com" target="_blank">Ananda Istikhomah</a> |
+      <a href="https://andikaja.github.io/portofolio" target="_blank">Andika</a> |
+      <a href="https://portfolio4.com" target="_blank">Ayudiah Rachmaniya</a> |
+      <a href="https://portfolio5.com" target="_blank">Frederik Wiandino Girkandra</a>
+    </marquee>
+  </footer>
+
+  <script>
+    // Update jumlah item di ikon keranjang saat halaman dimuat
+    document.addEventListener("DOMContentLoaded", function () {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.getElementById("cart-count").innerText = cart.length;
+    });
+  </script>
+</body>
+</html>

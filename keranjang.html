@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Keranjang - Dian Ayu</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      position: relative;
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+
+    /* Background image and blur */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('image/background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      filter: blur(8px);
+      z-index: -2;
+    }
+
+    /* Blue translucent overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(30, 87, 153, 0.4);
+      z-index: -1;
+    }
+    body {
+      padding: 100px 20px 80px; /* Sudah bagus: 100px untuk header, 80px untuk footer */
+      overflow-y: auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* Ubah jadi flex-start agar tidak ke tengah vertikal */
+      min-height: 100vh;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 60px;
+      padding: 12px 30px;
+      background: rgba(30, 87, 153, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #d4af37;
+      z-index: 10;
+    }
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      color:#d4af37;
+      font-size: 2.8em;
+    }
+    .nav {
+      display: flex;
+      gap: 30px;
+    }
+    .nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      position: relative;
+    }
+    .nav a:hover,
+    .active {
+      color: #f0c000;
+    }
+
+    #cart-count {
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 8px;
+      font-size: 12px;
+      position: absolute;
+      top: -10px;
+      right: -15px;
+    }
+
+    .container {
+      background-color: #8B0000;
+      color: white;
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 800px;
+      width: 100%;
+      margin-bottom: 100px; /* Tambahan agar bawah tidak ketutup footer */
+    }
+
+    .order-item {
+      background-color: rgba(255,255,255,0.1);
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .order-item button {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .order-btn {
+      background-color: white;
+      color: #8B0000;
+      font-weight: bold;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-top: auto;
+    }
+
+    .item-checkbox {
+      margin-bottom: 10px;
+      transform: scale(1.2);
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      background:  rgba(30, 87, 153, 0.8);
+      border-top: 3px solid #d4af37;
+      color: #fff;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+    }
+
+    footer marquee a {
+      color: #d4af37;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer marquee a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Dian Ayu</h1>
+  <div class="nav">
+    <a href="home.html">Home</a>
+    <a href="profile.html">Profile</a>
+    <a href="aneka menu.html">Product</a>
+    <a href="contact person.html">Contact Person</a>
+    <a href="keranjang.html" id="cart-link">🛒 <span id="cart-count">0</span></a>
+  </div>
+</header>
+
+<div class="container">
+  <h2 style="margin-bottom: 20px;">Daftar Pesanan</h2>
+  <div id="order-list"></div>
+  <p id="total-price" style="margin-top: 10px; font-weight: bold;"></p>
+  <button class="order-btn" onclick="sendSelectedOrder()">Pesan Sekarang</button>
+</div>
+
+<footer>
+  <marquee behavior="scroll" direction="left" scrollamount="5">
+    Terima kasih telah mengunjungi Toko Dian Ayu! Dibuat oleh:
+    <a href="https://portfolio1.com" target="_blank">'Afifah Salwa</a> |
+    <a href="https://portfolio2.com" target="_blank">Ananda Istiqomah</a> |
+    <a href="https://andikaja.github.io/portofolio/home.html" target="_blank">Andika</a> |
+    <a href="https://portfolio4.com" target="_blank">Ayudiah Rachmaniya</a> |
+    <a href="https://portfolio5.com" target="_blank">Frederik Wiandino Girkandra</a>
+  </marquee>
+</footer>
+
+<script>
+  function renderCart() {
+    const orderList = document.getElementById('order-list');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    document.getElementById('cart-count').innerText = cart.length;
+
+    if (cart.length === 0) {
+      orderList.innerHTML = '<p>Tidak ada pesanan di keranjang.</p>';
+      document.getElementById('total-price').innerText = '';
+      return;
+    }
+
+    orderList.innerHTML = '';
+    cart.forEach((item, index) => {
+      const div = document.createElement('div');
+      div.className = 'order-item';
+      div.innerHTML = `
+        <label>
+          <input type="checkbox" class="item-checkbox" data-index="${index}">
+          <strong>Produk:</strong> ${item.name}<br>
+          <strong>Ukuran:</strong> ${item.size}<br>
+          <strong>Rasa:</strong> ${item.flavor}<br>
+          <strong>Jumlah:</strong> ${item.quantity}<br>
+          <strong>Harga:</strong> Rp${item.price.toLocaleString()}
+        </label>
+        <button onclick="deleteItem(${index})">Hapus</button>
+      `;
+      orderList.appendChild(div);
+    });
+
+    document.querySelectorAll('.item-checkbox').forEach(cb => {
+      cb.addEventListener('change', updateTotalPrice);
+    });
+
+    updateTotalPrice();
+  }
+
+  function deleteItem(index) {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCart();
+  }
+
+  function updateTotalPrice() {
+    const checkboxes = document.querySelectorAll('.item-checkbox:checked');
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let total = 0;
+
+    checkboxes.forEach(cb => {
+      const index = parseInt(cb.getAttribute('data-index'));
+      total += (cart[index].price || 0);
+    });
+
+    document.getElementById('total-price').innerText =
+      checkboxes.length > 0 ? `Total Harga: Rp${total.toLocaleString()}` : '';
+  }
+
+  function sendSelectedOrder() {
+    const checkboxes = document.querySelectorAll('.item-checkbox:checked');
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    if (checkboxes.length === 0) {
+      alert('Pilih minimal satu pesanan untuk dipesan.');
+      return;
+    }
+
+    let message = 'Halo, saya ingin memesan:\n\n';
+    const selectedIndexes = [];
+
+    checkboxes.forEach((checkbox, i) => {
+      const index = parseInt(checkbox.getAttribute('data-index'));
+      selectedIndexes.push(index);
+      const item = cart[index];
+      message += `Pesanan ${i + 1}:\n`;
+      message += `- Produk: ${item.name}\n`;
+      message += `- Ukuran: ${item.size}\n`;
+      message += `- Rasa: ${item.flavor}\n`;
+      message += `- Jumlah: ${item.quantity}\n`;
+      message += `- Harga: Rp${item.price.toLocaleString()}\n\n`;
+    });
+
+    message += 'Terima kasih.';
+    const phone = '6285798686180';
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+
+    cart = cart.filter((_, index) => !selectedIndexes.includes(index));
+    localStorage.setItem('cart', JSON.stringify(cart));
+    renderCart();
+  }
+
+  renderCart();
+</script>
+
+</body>
+</html>

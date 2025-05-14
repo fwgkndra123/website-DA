@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dian Ayu</title>
+  <style>
+     @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+
+    /* Background image and blur */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('image/background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      filter: blur(8px);
+      z-index: -2;
+    }
+
+    /* Blue translucent overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(30, 87, 153, 0.4);
+      z-index: -1;
+    }
+    body {
+        display: flex;
+      justify-content: center;
+      flex-direction: column;
+        padding: 100px 20px 80px;
+        overflow: auto; /* aktifkan scroll jika dibutuhkan */
+        min-height: 100vh;
+    }
+
+    header, footer {
+        width: 100%;
+        position: fixed; /* opsional jika ingin sticky */
+        left: 0;
+    }
+    
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 60px;
+      padding: 12px 30px;
+      background: rgba(30, 87, 153, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #d4af37;
+      z-index: 10;
+    }
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      color:#d4af37;
+      font-size: 2.8em;
+    }
+    .nav {
+      display: flex;
+      gap: 30px;
+    }
+    .nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      position: relative;
+    }
+    .nav a:hover,
+    .active {
+      color: #f0c000;
+    }
+
+    #cart-count {
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 8px;
+      font-size: 12px;
+      position: absolute;
+      top: -10px;
+      right: -15px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 20px;
+    }
+
+
+    .product {
+      display: flex;
+      align-items: center;
+      background-color: #a52a2a;
+      padding: 20px;
+      border-radius: 10px;
+      font-family: 'Lucida Bright', sans-serif;
+      transition: transform 0.3s;
+    }
+
+
+    .product:hover {
+      transform: scale(1.02);
+    }
+
+
+    .product img {
+      width: 200px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 20px;
+    }
+
+
+    .product-content {
+      flex-grow: 1;
+      color: #fff;
+    }
+
+
+    .product-content h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.5em;
+    }
+
+
+    .description {
+      display: none;
+    }
+
+
+    .product:hover .description {
+      display: block;
+    }
+
+    .quote {
+        position: relative;
+        z-index: 1;
+        font-style: italic;
+        text-align: center;
+        font-size: 18px;
+        margin-top: 80px; /* supaya tidak tertutup header */
+        margin-bottom: 30px; /* jarak ke container produk */
+        color: #fff;
+        font-weight: bold;
+    }
+
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      background: rgba(30, 87, 153, 0.8);
+      border-top: 3px solid #d4af37;
+      color: #fff;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      z-index: 10;
+    }
+
+    footer marquee a {
+      color: #d4af37;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer marquee a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    /* Responsive: satu kolom di layar kecil */
+    @media (max-width: 768px) {
+      .products {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+  </style>
+</head>
+<body>
+
+
+    <header>
+        <h1>Dian Ayu</h1>
+        <div class="nav">
+          <a href="home.html">Home</a>
+          <a href="profile.html">Profile</a>
+          <a href="aneka menu.html">Product</a>
+          <a href="contact person.html">Contact Person</a>
+          <a href="keranjang.html" id="cart-link">🛒 <span id="cart-count">0</span></a>
+        </div>
+      </header>
+    
+      <p class="quote"><b>"Untuk order silahkan klik"</b></p>
+     
+      <div class="products">
+        <a href="kripik pisang.html" class="product">
+          <img src="image/pisang.jpg" alt="Kripik Pisang">
+          <div class="product-content">
+            <h3>Kripik Pisang</h3>
+            <div class="description">Kripik pisang manis dan renyah, cocok untuk cemilan sehat setiap hari.</div>
+          </div>
+        </a>
+    
+    
+        <a href="karipik tempe.html" class="product">
+          <img src="image/tempe.jpg" alt="Kripik Tempe">
+          <div class="product-content">
+            <h3>Kripik Tempe</h3>
+            <div class="description">Kripik tempe gurih dengan cita rasa tradisional khas nusantara.</div>
+          </div>
+        </a>
+    
+    
+        <a href="karipik mbothe.html" class="product">
+          <img src="image/mbothe.jpg" alt="Kripik Mbothe">
+          <div class="product-content">
+            <h3>Kripik Mbothe</h3>
+            <div class="description">Olahan mbothe garing, enak dan menyehatkan untuk semua usia.</div>
+          </div>
+        </a>
+    
+    
+        <a href="karipik pare.html" class="product">
+          <img src="image/pare.jpg" alt="Kripik Pare">
+          <div class="product-content">
+            <h3>Kripik Pare</h3>
+            <div class="description">Kripik pare dengan rasa pahit yang khas namun gurih.</div>
+          </div>
+        </a>
+    
+    
+        <a href="karipik peyek.html" class="product">
+          <img src="image/peyek.jpg" alt="Peyek">
+          <div class="product-content">
+            <h3>Peyek</h3>
+            <div class="description">Peyek renyah dengan kacang tanah pilihan.</div>
+          </div>
+        </a>
+    
+    
+        <a href="samring.html" class="product">
+          <img src="image/samring.jpg" alt="Samring">
+          <div class="product-content">
+            <h3>Samring</h3>
+            <div class="description">Samring gurih, cocok untuk cemilan saat santai bersama keluarga.</div>
+          </div>
+        </a>
+    
+    
+        <a href="Kripik Singkong.html" class="product">
+          <img src="image/singkong.jpg" alt="Kripik Singkong">
+          <div class="product-content">
+            <h3>Kripik Singkong</h3>
+            <div class="description">Kripik singkong renyah dengan bumbu tradisional khas.</div>
+          </div>
+        </a>
+    
+    
+        <a href="Aneka kue.html" class="product">
+          <img src="image/kue.jpg" alt="Aneka Kue">
+          <div class="product-content">
+            <h3>Aneka Kue</h3>
+            <div class="description">Berbagai macam kue kering dan basah untuk berbagai acara.</div>
+          </div>
+        </a>
+      </div>
+    
+  <footer>
+    <marquee behavior="scroll" direction="left" scrollamount="5">
+      Terima kasih telah mengunjungi Toko Dian Ayu! Dibuat oleh:
+      <a href="https://portfolio1.com" target="_blank">'Afifah Salwa</a> |
+      <a href="https://portfolio2.com" target="_blank">Ananda Istiqomah</a> |
+      <a href="https://andikaja.github.io/portofolio/home.html" target="_blank">Andika</a> |
+      <a href="https://portfolio4.com" target="_blank">Ayudiah Rachmaniya</a> |
+      <a href="https://portfolio5.com" target="_blank">Frederik Wiandino Girkandra</a>
+    </marquee>
+  </footer>
+
+  <script>
+    // Update jumlah item di ikon keranjang saat halaman dimuat
+    document.addEventListener("DOMContentLoaded", function () {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      document.getElementById("cart-count").innerText = cart.length;
+    });
+  </script>
+
+</body>
+</html>
+
+
+

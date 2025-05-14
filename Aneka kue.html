@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aneka Kue - Dian Ayu</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    html, body {
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background image and blur */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('image/background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      filter: blur(8px);
+      z-index: -2;
+    }
+
+    /* Blue translucent overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(30, 87, 153, 0.4);
+      z-index: -1;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 100px 20px 80px; /* memberi ruang untuk header dan footer */
+      overflow: auto; /* aktifkan scroll jika dibutuhkan */
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 60px;
+      padding: 12px 30px;
+      background: rgba(30, 87, 153, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #d4af37;
+      z-index: 10;
+    }
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      color:#d4af37;
+      font-size: 2.8em;
+    }
+    .nav {
+      display: flex;
+      gap: 30px;
+    }
+    .nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      position: relative;
+    }
+    .nav a:hover,
+    .active {
+      color: #f0c000;
+    }
+    #cart-count {
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 8px;
+      font-size: 12px;
+      position: absolute;
+      top: -10px;
+      right: -15px;
+    }
+    .product-card {
+      background-color: #8B0000;
+      color: white;
+      border-radius: 20px;
+      padding: 40px;
+      display: flex;
+      gap: 30px;
+      max-width: 1000px;
+      margin-top: 0;
+    }
+    .product-card img {
+      width: 300px;
+      border-radius: 10px;
+    }
+    .product-info {
+      flex: 1;
+    }
+    form label {
+      font-weight: bold;
+    }
+    form select, form input {
+      margin-bottom: 15px;
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    .add-btn {
+      background-color: gold;
+      color: #000;
+    }
+    .order-btn {
+      background-color: white;
+      color: #8B0000;
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      background: rgba(30, 87, 153, 0.8);
+      border-top: 3px solid #d4af37;
+      color: #fff;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+    }
+
+    footer marquee a {
+      color: #d4af37;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer marquee a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    .price-display {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #ffd700;
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <h1>Dian Ayu</h1>
+  <div class="nav">
+    <a href="home.html">Home</a>
+    <a href="profile.html">Profile</a>
+    <a href="aneka menu.html">Product</a>
+    <a href="contact person.html">Contact Person</a>
+    <a href="keranjang.html" id="cart-link">🛒 <span id="cart-count">0</span></a>
+  </div>
+</header>
+
+<div class="product-card">
+  <img src="image/kue.jpg" alt="Keripik Mbote">
+  <div class="product-info">
+    <h2>Aneka Kue</h2>
+    <p><strong>Macam-Macam:</strong> Donat, Roti Kukus, Bolu Kukus, Risol, dll </p>
+    <br>
+    <form id="order-form">
+      <label for="size">Jenis-jenis:</label><br>
+      <select id="size" name="size" required onchange="updatePrice()">
+        <option value="Donat">Donat</option>
+        <option value="Roti Kukus">Roti kukus</option>
+        <option value="Bolu kukus">Bolu kukus</option>
+        <option value="Risol">Risol</option>
+        <option value="Apem">Apem</option>
+      </select><br>
+
+      <label for="flavor">Ukuran:</label><br>
+      <select id="flavor" name="flavor" required onchange="updatePrice()">
+        <option value="Kecil">Kecil</option>
+        <option value="Besar">Besar</option>
+      </select><br>
+
+      <label for="quantity">Jumlah:</label><br>
+      <input type="number" id="quantity" name="quantity" value="1" min="1" required oninput="updatePrice()"><br>
+
+      <div class="price-display" id="price-display">Harga: Rp. 1.000</div>
+
+      <button type="button" class="add-btn" onclick="addToCart()">Masukkan Keranjang</button>
+      <button type="button" class="order-btn" onclick="orderViaWhatsApp()">Pesan Sekarang</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <marquee behavior="scroll" direction="left" scrollamount="5">
+    Terima kasih telah mengunjungi Toko Dian Ayu! Dibuat oleh:
+    <a href="https://portfolio1.com" target="_blank">'Afifah Salwa</a> |
+    <a href="https://portfolio2.com" target="_blank">Ananda Istiqomah</a> |
+    <a href="https://andikaja.github.io/portofolio/home.html" target="_blank">Andika</a> |
+    <a href="https://portfolio4.com" target="_blank">Ayudiah Rachmaniya</a> |
+    <a href="https://portfolio5.com" target="_blank">Frederik Wiandino Girkandra</a>
+  </marquee>
+</footer>
+
+<script>
+  const priceTable = {
+  "Roti Kukus" : 1000,
+  "Bolu kukus" : 1000,
+  "Risol" : 2000,
+  "Apem": 1000,
+  "Donat": 1000,
+  };
+
+  function updatePrice() {
+    const size = document.getElementById('size').value;
+    const flavor = document.getElementById('flavor').value;
+    const quantity = parseInt(document.getElementById('quantity').value);
+    let basePrice = priceTable[size] || 0;
+
+    if (flavor === "Besar") {
+      basePrice += 1000;
+    }
+
+    const totalPrice = basePrice * quantity;
+    document.getElementById('price-display').innerText = `Harga: Rp. ${totalPrice.toLocaleString('id-ID')}`;
+  }
+
+  function getFormData() {
+    const size = document.getElementById('size').value;
+    const flavor = document.getElementById('flavor').value;
+    const quantity = parseInt(document.getElementById('quantity').value);
+    let basePrice = priceTable[size] || 0;
+    if (flavor === "Besar") {
+      basePrice += 1000;
+    }
+    const totalPrice = basePrice * quantity;
+
+    return {
+      name: "Aneka Kue",
+      size,
+      flavor,
+      quantity,
+      price: totalPrice
+    };
+  }
+
+  function addToCart() {
+    const item = getFormData();
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(item);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert('Produk berhasil ditambahkan ke keranjang!');
+    document.getElementById('cart-count').innerText = cart.length;
+  }
+
+  function orderViaWhatsApp() {
+    const item = getFormData();
+    const message = `Halo, saya ingin memesan:\n\n` +
+      `*Produk:* ${item.name}\n` +
+      `*Ukuran:* ${item.size}\n` +
+      `*Rasa:* ${item.flavor}\n` +
+      `*Jumlah:* ${item.quantity}\n` +
+      `*Total Harga:* Rp. ${item.price.toLocaleString('id-ID')}\n\n` +
+      `Terima kasih.`;
+
+    const phone = "6285798686180";
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+  }
+
+  // Inisialisasi tampilan harga saat pertama kali
+  document.addEventListener("DOMContentLoaded", updatePrice);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hubungi Kami - Dian Ayu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      position: relative;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('image/background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      filter: blur(8px);
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(30, 87, 153, 0.4);
+      z-index: -1;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding-bottom: 80px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 60px;
+      padding: 12px 30px;
+      background: rgba(30, 87, 153, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #d4af37;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      color: #d4af37;
+      font-size: 36px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .nav a:hover {
+      color: #d4af37;
+    }
+
+    #cart-link {
+      position: relative;
+      display: inline-block;
+    }
+
+    #cart-count {
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 8px;
+      font-size: 12px;
+      position: absolute;
+      top: -10px;
+      right: -15px;
+    }
+
+    .container {
+      padding-top: 120px;
+      max-width: 1200px;
+      margin: auto;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .contact-section {
+      background-color: transparent;
+      padding: 20px 0 40px;
+    }
+
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      color: #fff;
+      background-color: rgba(166, 43, 43, 0.95);
+      padding: 60px;
+      border-radius: 12px;
+      justify-content: flex-start;
+      font-size: 20px;
+    }
+
+    .column {
+      flex: 1 1 300px;
+      min-width: 250px;
+      text-align: center;
+    }
+
+    .column h3 {
+      color: #ffd700;
+      margin-bottom: 16px;
+      font-size: 24px;
+    }
+
+    .logo-img {
+      width: 200px; /* Memperbesar ukuran gambar maskot */
+      margin-bottom: 16px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .desc {
+      font-size: 18px;
+      color: #f0f0f0;
+      line-height: 1.6;
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    .contact-section p {
+      font-size: 18px;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    .socials {
+      margin-top: 20px;
+    }
+
+    .socials a {
+      display: inline-block;
+      margin-right: 16px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .socials a img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      padding: 5px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .socials a:hover img {
+      transform: scale(1.2);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 60px;
+      background: rgba(30, 87, 153, 0.8);
+      border-top: 3px solid #d4af37;
+      color: #fff;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      z-index: 10;
+    }
+
+    footer marquee a {
+      color: #d4af37;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer marquee a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    /* Posisi alamat di pojok kanan */
+    .address {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 15px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 16px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Dian Ayu</h1>
+    <div class="nav">
+      <a href="home.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="aneka menu.html">Product</a>
+      <a href="contact person.html">Contact Person</a>
+      <a href="keranjang.html" id="cart-link">🛒 <span id="cart-count">0</span></a>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="contact-section">
+      <div class="contact-grid">
+        <!-- Logo dan deskripsi -->
+        <div class="column">
+          <img src="image/maskot.png" alt="Logo" class="logo-img" />
+          <p class="desc">
+            Perusahaan Industri Makanan Ringan yang bersifat padat karya dan bergerak dalam produksi pengolahan makanan ringan yang berkualitas dan menggunakan bahan-bahan pilihan.
+          </p>
+        </div>
+
+        <!-- Hubungi Kami -->
+        <div class="column">
+          <h3>HUBUNGI KAMI</h3>
+          <p>Jl. Dorowati Selatan No. 33<br>Dusun Paras, Desa Mulyorejo,<br>Kecamatan Lawang, Kabupaten Malang – Jawa Timur – 65251</p>
+          <div class="socials">
+            <a href="https://wa.me/6281234567890" target="_blank" title="WhatsApp">
+              <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+            </a>
+            <a href="https://www.facebook.com/sri.andayani.296450/" target="_blank" title="Facebook">
+              <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/kripik_dianayu?igsh=cmZrNGhhNDNoYXFx" target="_blank" title="Instagram">
+              <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Alamat di pojok kanan -->
+    <div class="address">
+      <p>Jl. Dorowati Selatan No. 33<br>Dusun Paras, Desa Mulyorejo,<br>Kecamatan Lawang, Kabupaten Malang – Jawa Timur – 65251</p>
+    </div>
+  </div>
+
+  <footer>
+    <marquee behavior="scroll" direction="left" scrollamount="5">
+      Terima kasih telah mengunjungi Toko Dian Ayu! Dibuat oleh:
+      <a href="https://portfolio1.com" target="_blank">'Afifah Salwa</a> |
+      <a href="https://portfolio2.com" target="_blank">Ananda Istikhomah</a> |
+      <a href="https://andikaja.github.io/portofolio" target="_blank">Andika</a> |
+      <a href="https://portfolio4.com" target="_blank">Ayudiah Rachmaniya</a> |
+      <a href="https://portfolio5.com" target="_blank">Frederik Wiandino Girkandra</a>
+    </marquee>
+  </footer>
+</body>
+</html>
